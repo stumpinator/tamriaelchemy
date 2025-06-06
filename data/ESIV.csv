@@ -1,0 +1,144 @@
+source,name,game_id,primary,secondary,tertiary,quaternary,value,weight,harvest
+Oblivion,Alkanet Flower,0003365C,Restore Intelligence,Resist Poison,Light,Damage Fatigue,1,0.1,80
+Oblivion,Aloe Vera Leaves,000A7924,Restore Fatigue,Restore Health,Damage Magicka,Invisibility,1,0.1,80
+Oblivion,Ambrosia,000704A0,Restore Health,,,,2,0.1,80
+Oblivion,Apple,0003365D,Restore Fatigue,Damage Luck,Fortify Willpower,Damage Health,1,0.2,N/A
+Oblivion,Arrowroot,0003365E,Restore Agility,Damage Luck,Fortify Strength,Burden,2,0.1,80
+Oblivion,Beef,0003365F,Restore Fatigue,Shield,Fortify Agility,Dispel,1,1,N/A
+Oblivion,Bergamot Seeds,000A7933,Resist Disease,Dispel,Damage Magicka,Silence,1,0.1,80
+Oblivion,Blackberry,00033663,Restore Fatigue,Resist Shock,Fortify Endurance,Restore Magicka,1,0.1,80
+Oblivion,Bloodgrass,00033664,Chameleon,Resist Paralysis,Burden,Fortify Health,1,0.1,50
+Oblivion,Boar Meat,00033665,Restore Health,Damage Speed,Fortify Health,Burden,20,2,N/A
+Oblivion,Bog Beacon Asco Cap,0008446C,Restore Magicka,Shield,Damage Personality,Damage Endurance,1,0.1,50
+Oblivion,Bonemeal,0001EBFF,Damage Fatigue,Resist Fire,Fortify Luck,Night-Eye,5,0.2,N/A
+Oblivion,Bread Loaf,00023D89,Restore Fatigue,Detect Life,Damage Agility,Damage Strength,1,0.5,N/A
+Oblivion,Cairn Bolete Cap,0006251E,Restore Health,Damage Intelligence,Resist Paralysis,Shock Damage,1,0.1,33
+Oblivion,Carrot,00033666,Restore Fatigue,Night-Eye,Fortify Intelligence,Damage Endurance,1,0.2,80
+Oblivion,Cheese Wedge,00033668,Restore Fatigue,Resist Fire,Fire Shield,Damage Agility,1,0.2,N/A
+Oblivion,Cheese Wheel,00033669,Restore Fatigue,Resist Paralysis,Damage Luck,Fortify Willpower,1,3,N/A
+Oblivion,Cinnabar Polypore Red Cap,0008529C,Restore Agility,Shield,Damage Personality,Damage Endurance,3,0.1,50
+Oblivion,Cinnabar Polypore Yellow Cap,0008529B,Restore Endurance,Fortify Endurance,Damage Personality,Reflect Spell,3,0.1,50
+Oblivion,Clannfear Claws,0003366A,Cure Disease,Resist Disease,Paralyze,Damage Health,50,2.0,N/A
+Oblivion,Clouded Funnel Cap,00084472,Restore Intelligence,Fortify Intelligence,Damage Endurance,Damage Magicka,1,0.1,50
+Oblivion,Columbine Root Pulp,000A7925,Restore Personality,Resist Frost,Fortify Magicka,Chameleon,1,0.1,80
+Oblivion,Corn,0003366B,Restore Fatigue,Restore Intelligence,Damage Agility,Shock Shield,1,0.2,80
+Oblivion,Crab Meat,0003366C,Restore Endurance,Resist Shock,Damage Fatigue,Fire Shield,1,1,N/A
+Oblivion,Daedra Heart,0001EC8F,Restore Health,Shock Shield,Damage Magicka,Silence,25,2,N/A
+Oblivion,Daedra Silk,00033670,Burden,Night-Eye,Chameleon,Damage Endurance,75,0.5,N/A
+Oblivion,Daedra Venin,00033671,Paralyze,Restore Fatigue,Damage Health,Reflect Damage,75,0.2,N/A
+Oblivion,Daedroth Teeth,00033672,Night-Eye,Frost Shield,Burden,Light,65,0.5,N/A
+Oblivion,Dragon's Tongue,00025039,Resist Fire,Damage Health,Restore Health,Fire Shield,5,0.1,80
+Oblivion,Dreugh Wax,00033673,Damage Fatigue,Resist Poison,Water Breathing,Damage Health,70,1,N/A
+Oblivion,Dryad Saddle Polypore Cap,0008529D,Restore Luck,Resist Frost,Damage Speed,Frost Damage,10,0.1,50
+Oblivion,Ectoplasm,0001EBFE,Shock Damage,Dispel,Fortify Magicka,Damage Health,20,0.2,N/A
+Oblivion,Elf Cup Cap,0008529E,Damage Willpower,Cure Disease,Fortify Strength,Damage Intelligence,5,0.1,50
+Oblivion,Emetic Russula Cap,0008529F,Restore Agility,Shield,Damage Personality,Damage Endurance,4,0.1,50
+Oblivion,Fennel Seeds,000A7926,Restore Fatigue,Damage Intelligence,Damage Magicka,Paralyze,5,0.1,80
+Oblivion,Fire Salts,00033675,Fire Damage,Resist Frost,Restore Magicka,Fire Shield,30,0.1,N/A
+Oblivion,Flax Seeds,000A7927,Restore Magicka,Feather,Shield,Damage Health,1,0.1,80
+Oblivion,Flour,00033674,Restore Fatigue,Damage Personality,Fortify Fatigue,Reflect Damage,1,0.2,N/A
+Oblivion,Fly Amanita Cap,00084471,Restore Agility,Burden,Restore Health,Shock Damage,1,0.1,50
+Oblivion,Foxglove Nectar,00033687,Resist Poison,Resist Paralysis,Restore Luck,Resist Disease,1,0.1,80
+Oblivion,Frost Salts,00022E5B,Frost Damage,Resist Fire,Silence,Frost Shield,60,0.1,N/A
+Oblivion,Garlic,00033677,Resist Disease,Damage Agility,Frost Shield,Fortify Strength,1,0,80
+Oblivion,Ginkgo Leaf,00033678,Restore Speed,Fortify Magicka,Damage Luck,Shock Damage,1,0.1,N/A
+Oblivion,Ginseng,00033679,Damage Luck,Cure Poison,Burden,Fortify Magicka,2,0.1,80
+Oblivion,Glow Dust,0001EBE8,Restore Speed,Light,Reflect Spell,Damage Health,40,0.1,N/A
+Oblivion,Grapes,0003367B,Restore Fatigue,Water Walking,Dispel,Damage Health,2,0.1,80
+Oblivion,Green Stain Cup Cap,0008446A,Restore Fatigue,Damage Speed,Reflect Damage,Damage Health,1,0.1,50
+Oblivion,Green Stain Shelf Cap,0008529A,Restore Luck,Fortify Luck,Damage Fatigue,Restore Health,10,0.1,50
+Oblivion,Ham,0003367C,Restore Fatigue,Restore Health,Damage Magicka,Damage Luck,1,1,N/A
+Oblivion,Harrada,0003367D,Damage Health,Damage Magicka,Silence,Paralyze,2,0.1,50
+Oblivion,Imp Gall,0002EE72,Fortify Personality,Cure Paralysis,Damage Health,Fire Damage,15,0.2,N/A
+Oblivion,Ironwood Nut,0003367E,Restore Intelligence,Resist Fire,Damage Fatigue,Fortify Health,1,0.1,N/A
+Oblivion,Lady's Mantle Leaves,000A7928,Restore Health,Damage Endurance,Night-Eye,Feather,5,0.1,80
+Oblivion,Lady's Smock Leaves,000A7929,Restore Intelligence,Resist Fire,Damage Fatigue,Fortify Health,1,0.1,80
+Oblivion,Lavender Sprig,000A792A,Restore Personality,Fortify Willpower,Restore Health,Damage Luck,1,0.1,80
+Oblivion,Leek,00033680,Restore Fatigue,Fortify Agility,Damage Personality,Damage Strength,3,0.1,80
+Oblivion,Lettuce,00033681,Restore Fatigue,Restore Luck,Fire Shield,Damage Personality,1,0.5,80
+Oblivion,Lichor,0007049E,Restore Magicka,,,,3,0.1,80
+Oblivion,Mandrake Root,00033683,Cure Disease,Resist Poison,Damage Agility,Fortify Willpower,1,0.1,80
+Oblivion,Milk Thistle Seeds,000A792C,Light,Frost Damage,Cure Paralysis,Paralyze,1,0.1,80
+Oblivion,Minotaur Horn,00033568,Restore Willpower,Burden,Fortify Endurance,Resist Paralysis,55,5,N/A
+Oblivion,Monkshood Root Pulp,000A792E,Restore Strength,Damage Intelligence,Fortify Endurance,Burden,1,0.1,80
+Oblivion,Morning Glory Root Pulp,000A792F,Burden,Damage Willpower,Frost Shield,Damage Magicka,1,0.1,80
+Oblivion,Mort Flesh,00033685,Damage Fatigue,Damage Luck,Fortify Health,Silence,10,2,N/A
+Oblivion,Motherwort Sprig,000A7930,Resist Poison,Damage Fatigue,Silence,Invisibility,1,0.1,80
+Oblivion,Mugwort Seeds,000A7931,Restore Health,,,,1,0.1,N/A
+Oblivion,Mutton,00033686,Fortify Health,Damage Fatigue,Dispel,Damage Magicka,2,2,N/A
+Oblivion,Nightshade,00033688,Damage Health,Burden,Damage Luck,Fortify Magicka,1,0.1,80
+Oblivion,Ogre's Teeth,00033689,Damage Intelligence,Resist Paralysis,Shock Damage,Fortify Strength,75,3,N/A
+Oblivion,Onion,0003368A,Restore Fatigue,Water Breathing,Detect Life,Damage Health,1,0.2,N/A
+Oblivion,Orange,0007588E,Restore Fatigue,Detect Life,Burden,Shield,2,0.2,N/A
+Oblivion,Pear,0003368B,Restore Fatigue,Damage Speed,Fortify Speed,Damage Health,1,0.2,N/A
+Oblivion,Peony Seeds,000A7932,Restore Strength,Damage Health,Damage Speed,Restore Fatigue,1,0.1,80
+Oblivion,Potato,0003368C,Restore Fatigue,Shield,Burden,Frost Shield,1,0.2,80
+Oblivion,Primrose Leaves,000A7934,Restore Willpower,Restore Personality,Fortify Luck,Damage Strength,3,0.1,80
+Oblivion,Pumpkin,0003368D,Restore Fatigue,Damage Agility,Damage Personality,Detect Life,2,5,80
+Oblivion,Radish,0003368E,Restore Fatigue,Damage Endurance,Chameleon,Burden,1,0.1,80
+Oblivion,Rat Meat,0003368F,Damage Fatigue,Detect Life,Damage Magicka,Silence,1,0.5,N/A
+Oblivion,Redwort Flower,0002503A,Resist Frost,Cure Poison,Damage Health,Invisibility,4,0.1,80
+Oblivion,Rice,00033690,Restore Fatigue,Silence,Shock Shield,Damage Agility,1,0.2,80
+Oblivion,Root Pulp,00033691,Cure Disease,Damage Willpower,Fortify Strength,Damage Intelligence,1,0.1,N/A
+Oblivion,Sacred Lotus Seeds,000A7936,Resist Frost,Damage Health,Feather,Dispel,1,0.1,80
+Oblivion,Scales,00033692,Damage Willpower,Water Breathing,Damage Health,Water Walking,5,0.1,N/A
+Oblivion,Scamp Skin,00033693,Damage Magicka,Resist Shock,Reflect Damage,Damage Health,10,1.5,N/A
+Oblivion,Shepherd's Pie,000B97E9,Cure Disease,Shield,Fortify Agility,Dispel,0,1,N/A
+Oblivion,S'jirra's Famous Potato Bread,00177A29,Detect Life,Restore Health,Damage Agility,Damage Strength,30,0.5,N/A
+Oblivion,Somnalius Frond,00033696,Restore Speed,Damage Endurance,Fortify Health,Feather,3,0.1,80
+Oblivion,Spiddal Stick,00033697,Damage Health,Damage Magicka,Fire Damage,Restore Fatigue,2,0.1,50
+Oblivion,St. Jahn's Wort Nectar,000A7939,Resist Shock,Damage Health,Cure Poison,Chameleon,5,0.1,80
+Oblivion,Steel-Blue Entoloma Cap,0008446B,Restore Magicka,Fire Damage,Resist Frost,Burden,1,0.1,50
+Oblivion,Stinkhorn Cap,0008446D,Damage Health,Restore Magicka,Water Walking,Invisibility,3,0.1,50
+Oblivion,Strawberry,00033699,Restore Fatigue,Cure Poison,Damage Health,Reflect Damage,1,0.1,80
+Oblivion,Summer Bolete Cap,00084470,Restore Agility,Shield,Damage Personality,Damage Endurance,1,0.1,50
+Oblivion,Sweetcake,0003369A,Restore Fatigue,Feather,Restore Health,Burden,1,0.2,N/A
+Oblivion,Sweetroll,0003369B,Restore Fatigue,Resist Disease,Damage Personality,Fortify Health,1,0.2,N/A
+Oblivion,Taproot,000AF06E,Restore Luck,Damage Endurance,Resist Poison,Shock Shield,1,0.3,N/A
+Oblivion,Tiger Lily Nectar,000A792B,Restore Endurance,Damage Strength,Water Walking,Damage Willpower,3,0.1,80
+Oblivion,Tinder Polypore Cap,0008446F,Restore Willpower,Resist Disease,Invisibility,Damage Magicka,1,0.1,50
+Oblivion,Tobacco,0003369D,Restore Fatigue,Resist Paralysis,Damage Magicka,Dispel,5,0.1,80
+Oblivion,Tomato,0003369E,Restore Fatigue,Detect Life,Burden,Shield,2,0.2,80
+Oblivion,Troll Fat,00026B5C,Damage Agility,Fortify Personality,Damage Willpower,Damage Health,25,2,N/A
+Oblivion,Vampire Dust*,00009182,Silence,Resist Disease,Frost Damage,Invisibility,50,0.2,N/A
+Oblivion,Venison,0002229B,Restore Health,Feather,Damage Health,Chameleon,1,2,N/A
+Oblivion,Viper's Bugloss Leaves,000A793B,Resist Paralysis,Night-Eye,Burden,Cure Paralysis,1,0.1,80
+Oblivion,Void Salts,0003369F,Restore Magicka,Damage Health,Fortify Magicka,Dispel,30,0.4,N/A
+Oblivion,Water Hyacinth Nectar,000A793C,Damage Luck,Damage Fatigue,Restore Magicka,Fortify Magicka,2,0.1,80
+Oblivion,Watermelon,000336A0,Restore Fatigue,Light,Burden,Damage Health,2,5,80
+Oblivion,Wheat Grain,000336A1,Restore Fatigue,Damage Magicka,Fortify Health,Damage Personality,1,0.2,80
+Oblivion,White Seed Pod,000336A2,Restore Strength,Water Breathing,Silence,Light,5,0.1,80
+Oblivion,Wisp Stalk Caps,0006251F,Damage Health,Damage Willpower,Damage Intelligence,Fortify Speed,1,0.1,33
+Oblivion,Wormwood Leaves,000A793E,Fortify Fatigue,Invisibility,Damage Health,Damage Magicka,2,0.1,80
+Vile Lair,Purgeblood Salts,xx001372,Restore Magicka,Damage Health,Fortify Magicka,Dispel,0,0.4,100
+Shivering Isles,Alocasia Fruit,0001AE7A,Restore Fatigue,Light,Restore Health,Damage Magicka,1,0.25,80
+Shivering Isles,Ashen Remains,00081A68,Fortify Fatigue,Damage Luck,Silence,Weakness to Fire,5,0.8,N/A
+Shivering Isles,Aster Bloom Core,0001B035,Restore Agility,Dispel,Shield,Burden,1,0.1,80
+Shivering Isles,Black Tar,0003BABD,Damage Fatigue,Damage Speed,Damage Health,Shock Damage,1,0.1,33/66/80
+Shivering Isles,Blister Pod Cap,0001F3AA,Restore Magicka,Fortify Magicka,Night-Eye,Invisibility,1,0.1,66
+Shivering Isles,Bone Marrow,00044E61,Damage Health,Frost Damage,Damage Magicka,Paralyze,2,0.1,N/A
+Shivering Isles,Bone Shard,00052443,Restore Willpower,Frost Shield,Damage Magicka,Damage Luck,1,0.3,N/A
+Shivering Isles,Congealed Putrescence,000402E9,Restore Strength,Fire Damage,Restore Magicka,Damage Health,1,0.1,66
+Shivering Isles,Elytra Ichor,00044E5D,Restore Magicka,Burden,Chameleon,Silence,3,0.1,N/A
+Shivering Isles,Flame Stalk,0001B6AE / 00097613,Restore Health,Fire Damage,Frost Shield,Invisibility,1,0.1,33
+Shivering Isles,Fungus Stalk,00019529,Restore Strength,Water Walking,Fortify Health,Restore Magicka,1,0.1,33/50
+Shivering Isles,Gnarl Bark,00044E5E,Restore Endurance,Shield,Fire Shield,Damage Health,1,0.1,N/A
+Shivering Isles,Grummite Eggs,0001AE82,Damage Magicka,Dispel,Chameleon,Silence,1,0.5,33/80
+Shivering Isles,Hound Tooth,00044E62,Cure Poison,Detect Life,Burden,Invisibility,1,0.1,N/A
+Shivering Isles,Hunger Tongue,00044E60,Cure Poison,Cure Disease,Fire Damage,Fortify Magicka,4,0.1,N/A
+Shivering Isles,Hydnum Azure Giant Spore,0003BAD3,Restore Endurance,Detect Life,Fortify Health,Frost Shield,1,0.5,66
+Shivering Isles,Letifer Orca Digestive Slime,0003E632,Damage Health,Damage Fatigue,Damage Magicka,Restore Fatigue,1,0.1,66
+Shivering Isles,Red Kelp Gas Bladder,0001A16E,Restore Speed,Water Breathing,Cure Disease,Fortify Magicka,1,0.1,50
+Shivering Isles,Rot Scale,0001B6B2,Burden,Damage Health,Silence,Paralyze,1,0.1,25/33
+Shivering Isles,Scalon Fin,00044E5F,Water Breathing,Damage Health,Shock Damage,Burden,1,0.1,N/A
+Shivering Isles,Screaming Maw,0001B6B0,Restore Willpower,Detect Life,Chameleon,Restore Health,1,0.1,66
+Shivering Isles,Smoked Baliwog Leg,0007D048,Restore Fatigue,Feather,Restore Health,Damage Fatigue,2,1,N/A
+Shivering Isles,Swamp Tentacle,000413DC,Restore Personality,Water Breathing,Water Walking,Fortify Health,2,0.2,80
+Shivering Isles,Thorn Hook,0001B6B1,Damage Health,Damage Luck,Restore Magicka,Fortify Health,1,0.1,33
+Shivering Isles,Unrefined Greenmote,00077AD9,Drain Fatigue,Drain Health,Drain Magicka,Drain Intelligence,1,0.5,80
+Shivering Isles,Void Essence,00044E5C,Restore Health,Fortify Health,Fortify Strength,Fortify Endurance,50,0.2,N/A
+Shivering Isles,Watcher's Eye,0001B6AF,Restore Intelligence,Fortify Magicka,Light,Reflect Spell,1,0.2,80
+Shivering Isles,Water Root Pod Pit,00040CAF,Restore Health,Resist Fire,Fire Shield,Water Breathing,3,1,80
+Shivering Isles,Wisp Core,0007D04E,Restore Intelligence,Burden,Light,Chameleon,2,0.1,25
+Shivering Isles,Withering Moon,0001B6B3,Restore Magicka,Shield,Cure Disease,Reflect Spell,1,0.1,25/33
+Shivering Isles,Worm's Head Cap,0001B5AA,Restore Luck,Night-Eye,Fortify Fatigue,Paralyze,1,0.2,66/80

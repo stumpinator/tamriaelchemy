@@ -1,0 +1,110 @@
+source,name,game_id,primary,secondary,tertiary,quaternary,weight,value
+Skyrim,Abecean Longfin,00106e1b,Weakness to Frost,Fortify Sneak,Weakness to Poison,Fortify Restoration,0.5,15
+Skyrim,Bear Claws,0006bc02,Restore Stamina,Fortify Health,Fortify One-handed,Damage Magicka Regen,0.1,2
+Skyrim,Bee,000a9195,Restore Stamina,Ravage Stamina,Regenerate Stamina,Weakness to Shock,0.1,3
+Skyrim,Beehive Husk,000a9191,Resist Poison,Fortify Light Armor,Fortify Sneak,Fortify Destruction,1,5
+Skyrim,Bleeding Crown,0004da20,Weakness to Fire,Fortify Block,Weakness to Poison,Resist Magic,0.3,10
+Skyrim,Blisterwort,0004da25,Damage Stamina,Frenzy,Restore Health,Fortify Smithing,0.2,12
+Skyrim,Blue Butterfly Wing,000727de,Damage Stamina,Fortify Conjuration,Damage Magicka Regen,Fortify Enchanting,0.1,2
+Skyrim,Blue Dartwing,000e4f0c,Resist Shock,Fortify Pickpocket,Restore Health,Fear,0.1,1
+Skyrim,Blue Mountain Flower,00077e1c,Restore Health,Fortify Conjuration,Fortify Health,Damage Magicka Regen,0.1,2
+Skyrim,Bone Meal,00034cdd,Damage Stamina,Resist Fire,Fortify Conjuration,Ravage Stamina,0.5,5
+Skyrim,Briar Heart,0003ad61,Restore Magicka,Fortify Block,Paralysis,Fortify Magicka,0.5,20
+Skyrim,Butterfly Wing,000727e0,Restore Health,Fortify Barter,Lingering Damage Stamina,Damage Magicka,0.1,3
+Skyrim,Canis Root,0006abcb,Damage Stamina,Fortify One-handed,Fortify Marksman,Paralysis,0.1,5
+Skyrim,Charred Skeever Hide,00052695,Restore Stamina,Cure Disease,Resist Poison,Restore Health,0.5,1
+Skyrim,Chaurus Eggs,0003ad56,Weakness to Poison,Fortify Stamina,Damage Magicka,Invisibility,0.2,10
+Skyrim,Chicken's Egg,00023d77,Resist Magic,Damage Magicka Regen,Waterbreathing,Lingering Damage Stamina,0.5,2
+Skyrim,Creep Cluster,000b2183,Restore Magicka,Damage Stamina Regen,Fortify Carry Weight,Weakness to Magic,0.2,1
+Skyrim,Crimson Nirnroot,000b701a,Damage Health,Damage Stamina,Invisibility,Resist Magic,0.2,10
+Skyrim,Cyrodilic Spadetail,00106e19,Damage Stamina,Fortify Restoration,Fear,Ravage Health,0.25,15
+Skyrim,Daedra Heart,0003ad5b,Restore Health,Damage Stamina Regen,Damage Magicka,Fear,0.5,250
+Skyrim,Deathbell,000516c8,Damage Health,Ravage Stamina,Slow,Weakness to Poison,0.1,4
+Skyrim,Dragon's Tongue,000889a2,Resist Fire,Fortify Barter,Fortify Illusion,Fortify Two-handed,0.1,5
+Skyrim,Dwarven Oil,000f11c0,Weakness to Magic,Fortify Illusion,Regenerate Magicka,Restore Magicka,0.25,15
+Skyrim,Ectoplasm,0003ad63,Restore Magicka,Fortify Destruction,Fortify Magicka,Damage Health,0.1,25
+Skyrim,Elves Ear,00034d31,Restore Magicka,Fortify Marksman,Weakness to Frost,Resist Fire,0.1,10
+Skyrim,Eye of Sabre Cat,0006bc07,Restore Stamina,Ravage Health,Damage Magicka,Restore Health,0.1,2
+Skyrim,Falmer Ear,0003ad5d,Damage Health,Frenzy,Resist Poison,Fortify Lockpicking,0.2,10
+Skyrim,Fire Salts,0003ad5e,Weakness to Frost,Resist Fire,Restore Magicka,Regenerate Magicka,0.25,50
+Skyrim,Fly Amanita,0004da00,Resist Fire,Fortify Two-handed,Frenzy,Regenerate Stamina,0.1,2
+Skyrim,Frost Mirriam,00034d32,Resist Frost,Fortify Sneak,Ravage Magicka,Damage Stamina Regen,0.1,1
+Skyrim,Frost Salts,0003ad5f,Weakness to Fire,Resist Frost,Restore Magicka,Fortify Conjuration,0.25,100
+Skyrim,Garlic,00034d22,Resist Poison,Fortify Stamina,Regenerate Magicka,Regenerate Health,0.25,1
+Skyrim,Giant Lichen,0007e8c1,Weakness to Shock,Ravage Health,Weakness to Poison,Restore Magicka,0.25,5
+Skyrim,Giant's Toe,0003ad64,Damage Stamina,Fortify Health,Fortify Carry Weight,Damage Stamina Regen,1,20
+Skyrim,Glow Dust,0003ad73,Damage Magicka,Damage Magicka Regen,Fortify Destruction,Resist Shock,0.5,20
+Skyrim,Glowing Mushroom,0007ee01,Resist Shock,Fortify Destruction,Fortify Smithing,Fortify Health,0.2,5
+Skyrim,Grass Pod,00083e64,Resist Poison,Ravage Magicka,Fortify Alteration,Restore Magicka,0.1,1
+Skyrim,Hagraven Claw,0006b689,Resist Magic,Lingering Damage Magicka,Fortify Enchanting,Fortify Barter,0.25,20
+Skyrim,Hagraven Feathers,0003ad66,Damage Magicka,Fortify Conjuration,Frenzy,Weakness to Shock,0.1,20
+Skyrim,Hanging Moss,00057f91,Damage Magicka,Fortify Health,Damage Magicka Regen,Fortify One-handed,0.25,1
+Skyrim,Hawk Beak,000e7ebc,Restore Stamina,Resist Frost,Fortify Carry Weight,Resist Shock,0.25,15
+Skyrim,Hawk Feathers,000e7ed0,Cure Disease,Fortify Light Armor,Fortify One-handed,Fortify Sneak,0.1,15
+Skyrim,Histcarp,00106e18,Restore Stamina,Fortify Magicka,Damage Stamina Regen,Waterbreathing,0.25,6
+Skyrim,Honeycomb,000b08c5,Restore Stamina,Fortify Block,Fortify Light Armor,Ravage Stamina,1,5
+Skyrim,Human Flesh,001016b3,Damage Health,Paralysis,Restore Magicka,Fortify Sneak,0.25,1
+Skyrim,Human Heart,000b18cd,Damage Health,Damage Magicka,Damage Magicka Regen,Frenzy,1,0
+Skyrim,Ice Wraith Teeth,0003ad6a,Weakness to Frost,Fortify Heavy Armor,Invisibility,Weakness to Fire,0.25,30
+Skyrim,Imp Stool,0004da23,Damage Health,Lingering Damage Health,Paralysis,Restore Health,0.3,0
+Skyrim,Jazbay Grapes,0006ac4a,Weakness to Magic,Fortify Magicka,Regenerate Magicka,Ravage Health,0.2,1
+Skyrim,Juniper Berries,0005076e,Weakness to Fire,Fortify Marksman,Regenerate Health,Damage Stamina Regen,0.1,1
+Skyrim,Large Antlers,0006bc0a,Restore Stamina,Fortify Stamina,Slow,Damage Stamina Regen,0.1,2
+Skyrim,Lavender,00045c28,Resist Magic,Fortify Stamina,Ravage Magicka,Fortify Conjuration,0.1,1
+Skyrim,Luna Moth Wing,000727df,Damage Magicka,Fortify Light Armor,Regenerate Health,Invisibility,0.1,5
+Skyrim,Moon Sugar,000d8e3f,Weakness to Fire,Resist Frost,Restore Magicka,Regenerate Magicka,0.25,50
+Skyrim,Mora Tapinella,000ec870,Restore Magicka,Lingering Damage Health,Regenerate Stamina,Fortify Illusion,0.25,4
+Skyrim,Mudcrab Chitin,0006bc00,Restore Stamina,Cure Disease,Resist Poison,Resist Fire,0.25,2
+Skyrim,Namira's Rot,0004da24,Damage Magicka,Fortify Lockpicking,Fear,Regenerate Health,0.25,0
+Skyrim,Nightshade,0002f44c,Damage Health,Damage Magicka Regen,Lingering Damage Stamina,Fortify Destruction,0.1,8
+Skyrim,Nirnroot,00059b86,Damage Health,Damage Stamina,Invisibility,Resist Magic,0.2,10
+Skyrim,Nordic Barnacle,0007edf5,Damage Magicka,Waterbreathing,Regenerate Health,Fortify Pickpocket,0.2,5
+Skyrim,Orange Dartwing,000bb956,Restore Stamina,Ravage Magicka,Fortify Pickpocket,Lingering Damage Health,0.1,1
+Skyrim,Pearl,000854fe,Restore Stamina,Fortify Block,Restore Magicka,Resist Shock,0.1,2
+Skyrim,Pine Thrush Egg,00023d6f,Restore Stamina,Fortify Lockpicking,Weakness to Poison,Resist Shock,0.5,2
+Skyrim,Powdered Mammoth Tusk,0006bc10,Restore Stamina,Fortify Sneak,Weakness to Fire,Fear,0.1,2
+Skyrim,Purple Mountain Flower,00077e1e,Restore Stamina,Fortify Sneak,Lingering Damage Magicka,Resist Frost,0.1,2
+Skyrim,Red Mountain Flower,00077e1d,Restore Magicka,Ravage Magicka,Fortify Magicka,Damage Health,0.1,2
+Skyrim,River Betty,00106e1a,Damage Health,Fortify Alteration,Slow,Fortify Carry Weight,0.25,15
+Skyrim,Rock Warbler Egg,0007e8c8,Restore Health,Fortify One-handed,Damage Stamina,Weakness to Magic,0.5,2
+Skyrim,Sabre Cat Tooth,0006bc04,Restore Stamina,Fortify Heavy Armor,Fortify Smithing,Weakness to Poison,0.1,2
+Skyrim,Salt Pile,00034cdf,Weakness to Magic,Fortify Restoration,Slow,Regenerate Magicka,0.2,2
+Skyrim,Scaly Pholiota,0006f950,Weakness to Magic,Fortify Illusion,Regenerate Stamina,Fortify Carry Weight,0.25,4
+Skyrim,Silverside Perch,00106e1c,Restore Stamina,Damage Stamina Regen,Ravage Health,Resist Frost,0.25,15
+Skyrim,Skeever Tail,0003ad6f,Damage Stamina Regen,Ravage Health,Damage Health,Fortify Light Armor,0.2,3
+Skyrim,Slaughterfish Egg,0007e8c5,Resist Poison,Fortify Pickpocket,Lingering Damage Health,Fortify Stamina,0.2,3
+Skyrim,Slaughterfish Scales,0003ad70,Resist Frost,Lingering Damage Health,Fortify Heavy Armor,Fortify Block,0.1,3
+Skyrim,Small Antlers,0006bc0b,Weakness to Poison,Fortify Restoration,Lingering Damage Stamina,Damage Health,0.1,2
+Skyrim,Small Pearl,00085500,Restore Stamina,Fortify One-handed,Fortify Restoration,Resist Frost,0.1,2
+Skyrim,Snowberries,0001b3bd,Resist Fire,Fortify Enchanting,Resist Frost,Resist Shock,0.1,4
+Skyrim,Spider Egg,0009151b,Damage Stamina,Damage Magicka Regen,Fortify Lockpicking,Fortify Marksman,0.2,5
+Skyrim,Spriggan Sap,00063b5f,Damage Magicka Regen,Fortify Enchanting,Fortify Smithing,Fortify Alteration,0.2,15
+Skyrim,Swamp Fungal Pod,0007e8b7,Resist Shock,Lingering Damage Magicka,Paralysis,Restore Health,0.25,5
+Skyrim,Taproot,0003ad71,Weakness to Magic,Fortify Illusion,Regenerate Magicka,Restore Magicka,0.5,15
+Skyrim,Thistle Branch,000134aa,Resist Frost,Ravage Stamina,Resist Poison,Fortify Heavy Armor,0.1,1
+Skyrim,Torchbug Thorax,0004da73,Restore Stamina,Lingering Damage Magicka,Weakness to Magic,Fortify Stamina,0.1,1
+Skyrim,Troll Fat,0003ad72,Resist Poison,Fortify Two-handed,Frenzy,Damage Health,1,15
+Skyrim,Tundra Cotton,0003f7f8,Resist Magic,Fortify Magicka,Fortify Block,Fortify Barter,0.1,1
+Skyrim,Vampire Dust,0003ad76,Invisibility,Restore Magicka,Regenerate Health,Cure Disease,0.2,25
+Skyrim,Void Salts,0003ad60,Weakness to Shock,Resist Magic,Damage Health,Fortify Magicka,0.2,125
+Skyrim,Wheat,0004b0ba,Restore Health,Fortify Health,Damage Stamina Regen,Lingering Damage Magicka,0.1,5
+Skyrim,White Cap,0004da22,Weakness to Frost,Fortify Heavy Armor,Restore Magicka,Ravage Magicka,0.3,0
+Skyrim,Wisp Wrappings,0006bc0e,Restore Stamina,Fortify Destruction,Fortify Carry Weight,Resist Magic,0.1,2
+Hearthfire,Hawk's Egg,xx00F1CC,Resist Magic,Damage Magicka Regen,Waterbreathing,Lingering Damage Stamina,0.5,5
+Hearthfire,Salmon Roe,xx003545,Restore Stamina,Waterbreathing,Fortify Magicka,Regenerate Magicka,0.2,5
+Dawnguard,Ancestor Moth Wing,xx0059ba,Damage Stamina,Fortify Conjuration,Damage Magicka Regen,Fortify Enchanting,0.1,2
+Dawnguard,Chaurus Hunter Antennae,xx0183b7,Damage Stamina,Fortify Conjuration,Damage Magicka Regen,Fortify Enchanting,0.1,2
+Dawnguard,Gleamblossom,xx00b097,Resist Magic,Fear,Regenerate Health,Paralysis,0.1,5
+Dawnguard,Poison Bloom,xx0185fb,Damage Health,Slow,Fortify Carry Weight,Fear,0.25,5
+Dawnguard,Yellow Mountain Flower,xx002a78,Resist Poison,Fortify Restoration,Fortify Health,Damage Stamina Regen,0.1,2
+Dragonborn,Ash Creep Cluster,xx01cd74,Damage Stamina,Invisibility,Resist Fire,Fortify Destruction,0.25,20
+Dragonborn,Ash Hopper Jelly,xx01cd71,Restore Health,Fortify Light Armor,Resist Shock,Weakness to Frost,0.25,20
+Dragonborn,Ashen Grass Pod,xx016e26,Resist Fire,Weakness to Shock,Fortify Lockpicking,Fortify Sneak,0.1,1
+Dragonborn,Boar Tusk,xx01cd6f,Fortify Stamina,Fortify Health,Fortify Block,Frenzy,0.5,20
+Dragonborn,Burnt Spriggan Wood,xx01cd6e,Weakness to Fire,Fortify Alteration,Damage Magicka Regen,Slow,0.5,20
+Dragonborn,Emperor Parasol Moss,xx01ff75,Damage Health,Fortify Magicka,Regenerate Health,Fortify Two-handed,0.25,1
+Dragonborn,Felsaad Tern Feathers,xx03cd8e,Restore Health,Fortify Light Armor,Cure Disease,Resist Magic,0.1,15
+Dragonborn,Netch Jelly,xx01cd72,Paralysis,Fortify Carry Weight,Restore Stamina,Fear,0.5,20
+Dragonborn,Scathecraw,xx017e97,Ravage Health,Ravage Stamina,Ravage Magicka,Lingering Damage Health,0.1,1
+Dragonborn,Spawn Ash,xx01cd6d,Ravage Stamina,Resist Fire,Fortify Enchanting,Ravage Magicka,0.1,20
+Dragonborn,Trama Root,xx017008,Weakness to Shock,Fortify Carry Weight,Damage Magicka,Slow,0.2,1
