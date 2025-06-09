@@ -36,7 +36,6 @@ class Effect:
         self._db_id = -1
         self._alch_id = None #uuid4()
 
-
     def to_dict(self):
         return {"name": self.name,
                 "status": self.status}
@@ -529,14 +528,14 @@ class Potion(object):
 class Laboratory:
     context: set[str]
     all_items: list[str]
-    associated: Callable[[Iterable], set[str]]
+    associated: Callable[[set|frozenset], set[str]]
     _pivot: Callable[[Optional[set]], object]
     
     def __init__(self, all_items: Iterable, context: Iterable|None = None):
         context = context or []
         self.context = set(context)
         self.all_items = sorted(all_items)
-        self.associated = lambda x: list()
+        self.associated = lambda x: set()
         self._pivot = lambda x: None
     
     def print_tabbed(self, items: Iterable[str], columns: int = 4, cwidth: int = 30):
@@ -551,8 +550,7 @@ class Laboratory:
     
     def available(self) -> list[str]:
         if len(self.context) > 0:
-            k = frozenset(self.context)
-            return sorted(self.associated(k))
+            return sorted(self.associated(self.context))
         else:
             return self.all_items
 
@@ -873,24 +871,21 @@ class Alchemist:
             pots[k] = self.potions[k]
         return pots
 
-    def associated_effects(self, effects: Iterable) -> set[str]:
+    def associated_effects(self, effects: set|frozenset) -> set[str]:
         """Gets other effects that can appear in valid potions with passed effects
 
         Args:
-            effects (set): set of effects that can appear in a potion
+            effects (set|frozenset): set of effects that can appear in a potion
 
         Returns:
             set: set of other possible effects
         """
         # returns a sorted list of other possible effects with the given effects
         associated = set()
-        fx = set(effects)
-        
         for k in self.potions.keys():
-            if fx.issubset(k):
+            if effects.issubset(k):
                 associated.update(k)
-        
-        return associated.difference(fx)
+        return associated - effects
 
     def potions_with_ingredients(self, ingredient_names: Iterable) -> list[Potion]:
         """Get all potions containing (inclusive) ingredients
@@ -908,13 +903,20 @@ class Alchemist:
                 pots.append(self.recipes[p])
         return pots
     
-    def associated_ingredients(self, ingredient_names: Iterable) -> set[str]:
+    def associated_ingredients(self, ingredient_names: set|frozenset) -> set[str]:
+        """Gets other ingredients that can appear in valid recipes with passed effects
+
+        Args:
+            ingredient_names (set|frozenset): set of ingredient names that can appear in a recipe
+
+        Returns:
+            set: set of other possible ingredients
+        """
         ret = set()
-        ings = set(ingredient_names)
         for p in self.recipes.keys():
-            if ings.issubset(p):
+            if ingredient_names.issubset(p):
                 ret.update(p)
-        return ret ^ ings
+        return ret - ingredient_names
     
     def potion(self, recipe: Iterable[str]) -> Potion:
         """Potion by effects
@@ -1037,7 +1039,7 @@ class Oblivion(Alchemist):
     def create(cls, full=True):
         jxz_path = Path(cls.DEFAULT_FULL_JXZ)
         if jxz_path.exists() and full:
-            print("WARNING: loading the full oblivion data set can be slow.")
+            print("WARNING: loading the full oblivion data set can be slow and uses a LOT of memory!")
             print("Loading from a jxz is faster than creating, but it will still be noticable.")
         if not jxz_path.exists() and not full:
             # can load lite from full, but if full doesn't exist try the lite archive
@@ -1046,7 +1048,7 @@ class Oblivion(Alchemist):
         if jxz_path.exists():
             return cls.from_jxz(jxz_file=str(jxz_path), load_potions=True, load_recipes=full)
 
-        print("WARNING: creating oblivion alchemists from csv files can be VERY slow.")
+        print("WARNING: creating oblivion alchemists from csv files can be VERY slow and uses a LOT of memory!")
         csv_path = Path(cls.DEFAULT_CSV)
         if csv_path.exists():
             alchemist = cls.from_csv(ingredient_csv=str(csv_path),
