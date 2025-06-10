@@ -58,7 +58,7 @@ class Ingredient:
     source: str
     name: str
     game_id: str
-    _effects: dict
+    _effects: dict[int, str]
     value: int
     weight: float
     _level: int
@@ -207,7 +207,7 @@ class IngredientCollection:
     sources: set[str]
     _mastery: Mastery
     
-    def __init__(self, collection: Iterable[Ingredient] | None = None, mastery: Mastery = Mastery.MASTER):
+    def __init__(self, collection: Iterable[Ingredient] | None = None, mastery: Mastery = Mastery.EXPERT):
         self.sources = set()
         self.collection = list(collection) if collection else list()
         self.ingredient_map = dict()
@@ -264,7 +264,7 @@ class IngredientCollection:
         return self.effect_map.get(effect, set())
     
     @classmethod
-    def from_csv(cls, file: str, mastery: Mastery = Mastery.MASTER) -> Self:
+    def from_csv(cls, file: str, mastery: Mastery = Mastery.EXPERT) -> Self:
         return cls(collection=cls.enum_csv(file=file), mastery=mastery)
     
     @staticmethod
@@ -275,7 +275,7 @@ class IngredientCollection:
                 yield Ingredient.from_dict(row)
     
     @classmethod
-    def from_json(cls, file: str, mastery: Mastery = Mastery.MASTER) -> Self:
+    def from_json(cls, file: str, mastery: Mastery = Mastery.EXPERT) -> Self:
         return cls(collection=cls.enum_json(file=file), mastery=mastery)
     
     @staticmethod
@@ -832,7 +832,7 @@ class Alchemist:
             self.recipes[potion.ingredients_key] = potion
             self.potions.setdefault(potion.effects_key, list()).append(potion)
     
-    def catalog_potions(self, mastery: Mastery = Mastery.MASTER):
+    def catalog_potions(self, mastery: Mastery = Mastery.EXPERT):
         self.recipes.clear()
         self.potions.clear()
         
