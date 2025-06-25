@@ -27,14 +27,12 @@ class Mastery(IntEnum):
 class Effect:
     name: str
     status: int
-    _db_id: int
-    _alch_id: UUID
+    uid: int|UUID|None
     
-    def __init__(self, name: str, status: int = 0):
+    def __init__(self, name: str, status: int = 0, uid: int = -1):
         self.name = name
         self.status = status
-        self._db_id = -1
-        self._alch_id = None #uuid4()
+        self.uid = uid
 
     def to_dict(self):
         return {"name": self.name,
@@ -64,8 +62,7 @@ class Ingredient:
     _level: int
     _fxset: set[str]
     _max_effects: int = 4
-    _db_id: int
-    _alch_id: UUID|None
+    uid: int|UUID|None
     
     @classmethod
     def from_dict(cls, d: dict):
@@ -73,7 +70,7 @@ class Ingredient:
                    d['primary'], d['secondary'], d['tertiary'], d['quaternary'])
     
     def __init__(self, name: str, source: str, game_id: str, weight: float, value: int,
-                 primary: str, secondary: str, tertiary: str, quaternary: str):
+                 primary: str, secondary: str, tertiary: str, quaternary: str, uid: int = -1):
         self.source = source.strip()
         self.name = name.strip()
         self.game_id = game_id
@@ -81,8 +78,7 @@ class Ingredient:
         self.weight = float(weight)
         self._fxset = None
         self._effects = dict()
-        self._db_id = -1
-        self._alch_id = None #uuid4()
+        self.uid = uid
         
         self._effects[0] = primary.strip() if isinstance(primary, str) else None
         self._effects[1] = secondary.strip() if isinstance(secondary, str) else None
@@ -97,16 +93,20 @@ class Ingredient:
             else:
                 break
 
-    def to_dict(self) -> dict:
-        return {'name':self.name, 
-                'source':self.source, 
-                'game_id':self.game_id, 
-                'value':self.value, 
-                'weight':self.weight,
-                'primary':self._effects[0], 
-                'secondary':self._effects[1], 
-                'tertiary':self._effects[2], 
-                'quaternary':self._effects[3]}
+    def to_dict(self, effects: bool = True) -> dict:
+        d = {
+            'name':self.name, 
+            'source':self.source, 
+            'game_id':self.game_id, 
+            'value':self.value, 
+            'weight':self.weight
+        }
+        if effects:
+            d['primary'] = self._effects[0]
+            d['secondary'] = self._effects[1]
+            d['tertiary'] = self._effects[2]
+            d['quaternary'] = self._effects[3]
+        return d
 
     @property
     def key(self) -> Hashable:
@@ -306,16 +306,31 @@ class Potion(object):
     _checked: bool
     _ing_key: FrozenSet[str]
     _fx_key: FrozenSet[str]
-    _db_id: int
-    _alch_id: UUID
+    uid: int
+    rid: int
+    mastery: int
     
     @classmethod
-    def from_ingredients(cls, ingredients: Iterable[Ingredient]):
-        p = cls(ingredients)
+    def from_ingredients(cls, ingredients: Iterable[Ingredient], mastery: Mastery = Mastery.EXPERT):
+        p = cls(ingredients, mastery=mastery)
         if p.mix().check():
             return p
         else:
             return None
+    
+    @classmethod
+    def from_state(cls,
+                   ingredients: Iterable[Ingredient],
+                   effects: frozenset[str],
+                   mastery: int,
+                   mixed: bool = True,
+                   checked: bool = True):
+        p = cls(ingredients)
+        p.effects = effects
+        p.mastery = mastery
+        p._mixed = mixed
+        p._checked = checked
+        return p
     
     def __add__(self, other: Self|Ingredient):
         if not isinstance(other, Ingredient):
@@ -346,7 +361,11 @@ class Potion(object):
         pot._checked = None
         return pot
     
-    def __init__(self, ingredients: Iterable[Ingredient]):
+    def __init__(self, 
+                 ingredients: Iterable[Ingredient], 
+                 mastery: Mastery = Mastery.EXPERT, 
+                 uid: int = -1, 
+                 rid: int = -1):
         self._mixed = False
         self._checked = None
         self.effects = set()
@@ -355,8 +374,9 @@ class Potion(object):
         self._ing_key = None
         self._weight = None
         self._value = None
-        self._db_id = -1
-        self._alch_id = None #uuid4()
+        self.uid = uid
+        self.rid = rid
+        self.mastery = mastery.value
         
         for ing in ingredients:
             self.add_ingredient(ing)
