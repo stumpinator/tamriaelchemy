@@ -50,6 +50,16 @@ class Effect:
     
     def __repr__(self):
         return f"{self.name} ({self.status})"
+    
+    def __lt__(self, other: Self):
+        return self.name.__lt__(other.name)
+    
+    @property
+    def key(self) -> Hashable:
+        return self.name
+    
+    def __hash__(self):
+        return hash(self.as_tuple())
 
 
 class Ingredient:
@@ -147,9 +157,9 @@ class Ingredient:
             if v is not None and len(v) > 0 and k <= self._level:
                 self._fxset.add(v)
     
-    def common_effects(self, ingredient)-> bool | NotImplementedType:
+    def common_effects(self, ingredient)-> bool:
         if not isinstance(ingredient, Ingredient):
-            return NotImplemented
+            raise TypeError
         return self.effects & ingredient.effects
 
     def add_effect(self, effect: str) -> bool:
@@ -169,11 +179,14 @@ class Ingredient:
                 self._effects[0], self._effects[1], self._effects[2], self._effects[3], 
                 str(self.weight), str(self.value))
 
-    def __eq__(self, other) -> bool | NotImplementedType:
-        if not isinstance(other, Ingredient):
-            return NotImplemented
+    def __eq__(self, other: Self) -> bool:
+        if not isinstance(other, Self):
+            raise TypeError
         return self.as_tuple() == other.as_tuple()
     
+    def __lt__(self, other: Self):
+        return self.name.__lt__(other.name)
+        
     def __str__(self) -> str:
         return self.name
     
@@ -545,208 +558,256 @@ class Potion(object):
                 yield combo
 
 
-class Laboratory:
-    context: set[str]
-    all_items: list[str]
+class LabContext:
+    _selected: set
+    _mapping: dict
+    _available: set
     associated: Callable[[set|frozenset], set[str]]
-    _pivot: Callable[[Optional[set]], object]
-    
-    def __init__(self, all_items: Iterable, context: Iterable|None = None):
-        context = context or []
-        self.context = set(context)
-        self.all_items = sorted(all_items)
+
+    def __init__(self, context:set, available:set, mapping:dict):
+        self._selected = context
+        self._mapping = mapping
+        self._available = available
         self.associated = lambda x: set()
-        self._pivot = lambda x: None
     
-    def print_tabbed(self, items: Iterable[str], columns: int = 4, cwidth: int = 30):
+    @property
+    def mapping(self) -> dict[str,Ingredient|Effect]:
+        return self._mapping
+    
+    @property
+    def selected(self) -> set[str]:
+        return self._selected
+    
+    @property
+    def available(self) -> set[str]:
+        return self._available
+
+    def is_selected(self, other: int|str):
+        if other in self.mapping:
+            return self.mapping[other].name in self.selected
+        return False
+
+    def is_available(self, other: int|str):
+        if other in self.mapping:
+            return self.mapping[other].name in self.available
+        return False
+    
+    def add_to_context(self, other: int|str):
+        self.selected.add(self.mapping[other].name)
+        self._available = self.associated(self.selected)
+        
+    def remove_selected(self, other: int|str):
+        self.selected.remove(self.mapping[other].name)
+        self._available = self.associated(self.selected)
+
+
+class EffectContext(LabContext):
+    @property
+    def mapping(self) -> dict[str|int, Effect]:
+        return self._mapping
+    
+
+class IngredientContext(LabContext):
+    @property
+    def mapping(self) -> dict[str|int, Ingredient]:
+        return self._mapping
+
+
+class Laboratory:
+    _effects: list[Effect]
+    _effect_map: dict[str|int,Effect]
+    _ingredients: list[Ingredient]
+    _ingredient_map: dict[str|int,Ingredient]
+    context: EffectContext|IngredientContext|None
+    
+    get_potions: Callable[[frozenset, Optional[Any]], Optional[list[Potion]]]
+    potion: Callable[[frozenset], Optional[Potion]]
+    ingredients_with_effect: Callable[[str], set[str]]
+    associated_ingredients: Callable[[set|frozenset], set[str]]
+    associated_effects: Callable[[set|frozenset], set[str]]
+    
+    def __init__(self, effects: Iterable[Effect], ingredients: Iterable[Ingredient]):
+        self._effect_map = dict()
+        self._ingredient_map = dict()
+        self.context = None
+        self.associated_ingredients = lambda x: set()
+        self.associated_effects = lambda x: set()
+        self.get_potions = lambda x,y: list()
+        self.ingredients_with_effect = lambda x: set()
+        self.potion = lambda x: None
+        
+        for effect in effects:
+            self._effect_map[effect.name] = effect
+        
+        self._effects = sorted(self._effect_map.values())
+        
+        for i in range(0, len(self._effects)):
+            effect = self._effects[i]
+            if effect.uid is None or effect.uid < 0:
+                effect.uid = i
+            self._effect_map[effect.uid] = effect
+        
+        for ingredient in ingredients:
+            self._ingredient_map[ingredient.name] = ingredient
+        
+        self._ingredients = sorted(self._ingredient_map.values())
+        
+        for i in range(0, len(self._ingredients)):
+            ingredient = self._ingredients[i]
+            if ingredient.uid is None or ingredient.uid < 0:
+                ingredient.uid = i
+            self._ingredient_map[ingredient.uid] = ingredient
+    
+    def print_tabbed(self, items: Iterable[tuple[int,str]], columns: int = 4, cwidth: int = 30):
         i = 0
         for item in items:
             if i % columns == 0 and i > 0:
                 print('')
-            s = f"{i}) {item}"
+            s = f"{item[0]}) {item[1]}"
             print(f"{s.ljust(cwidth)}", end='')
             i += 1
         print('')
     
-    def available(self) -> list[str]:
-        if len(self.context) > 0:
-            return sorted(self.associated(self.context))
+    def print_ingredient(self, ingredient: Ingredient|None):
+        # if isinstance(ingredient, Ingredient):
+        #     print(f"      Name: {ingredient.name}")
+        #     print(f"    Source: {ingredient.source}")
+        #     print(f"     Value: {ingredient.value}")
+        #     print(f"    Weight: {ingredient.weight}")
+        #     print(f"   Primary: {ingredient.primary}")
+        #     print(f" Secondary: {ingredient.secondary}")
+        #     print(f"  Tertiary: {ingredient.tertiary}")
+        #     print(f"Quaternary: {ingredient.quaternary}")
+        pass
+    
+    def ingredients(self, *args) -> Self:
+        if len(args) > 0:
+            # initialize an ingredient context
+            context = set()
+            for arg in args:
+                if isinstance(arg, (int,str)):
+                    if arg in self._ingredient_map:
+                        context.add(self._ingredient_map.get(arg).name)
+            associated = self.associated_ingredients(context)
+            self.context = IngredientContext(context, associated, self._ingredient_map)
+            self.context.associated = self.associated_ingredients
         else:
-            return self.all_items
+            # print all available ingredients
+            self.print_tabbed(
+                iter((itm.uid,itm.name) for itm in self._ingredients)
+            )
+        return self
 
+    def effects(self, *args) -> Self:
+        if len(args) > 0:
+            # initialize an effects context
+            context = set()
+            for arg in args:
+                if isinstance(arg, (int,str)):
+                    if arg in self._effect_map:
+                        context.add(self._effect_map.get(arg).name)
+            associated = self.associated_effects(context)
+            self.context = EffectContext(context, associated, self._effect_map)
+            self.context.associated = self.associated_effects
+        else:
+            # print all available effects
+            self.print_tabbed(
+                iter((itm.uid,itm.name) for itm in self._effects)
+            )
+        return self
+
+    def add(self, other: int|str) -> Self:
+        ctx = self.context
+        if ctx.is_available(other):
+            ctx.add_to_context(other)
+        return self
+
+    def remove(self, other: int|str) -> Self:
+        ctx = self.context
+        if ctx.is_selected(other):
+            ctx.remove_selected(other)
+        return self
+    
     @property
     def stat(self):
+        if self.context is None:
+            print("No ingredients or effects selected")
+            return
+        
         print("Selected:")
-        print(self.context)
-        print("Available:")
-        print(self.available())
+        self.print_tabbed(
+            iter((self.context.mapping[itm].uid,itm) for itm in sorted(self.context.selected))
+        )
+        
+        if isinstance(self.context, IngredientContext):
+            potion = self.potion(frozenset(self.context.selected))
+            if potion is not None:
+                print("\nPotion Effects:")
+                self.print_tabbed(
+                    iter((self._effect_map[itm].uid,itm) for itm in sorted(potion.effects))
+                )
+        elif isinstance(self.context, EffectContext):
+            recipes = self.get_potions(frozenset(self.context.selected), list())
+            print(f"\nRecipes available: {len(recipes)}")
+        
+        if len(self.context.available) > 0:
+            print("\nAvailable:")
+            self.print_tabbed(
+                iter((self.context.mapping[itm].uid,itm) for itm in sorted(self.context.available))
+            )
+    
+    @property
+    def recipes(self):
+        if self.context is None:
+            print("Must select ingredients or effects first.")
+
+        print("Selected:")
+        self.print_tabbed(
+            iter((self.context.mapping[itm].uid,itm) for itm in sorted(self.context.selected))
+        )
+        if isinstance(self.context, EffectContext):
+            btext = "\nAvailable Recipes:"
+            print(btext)
+            pots: list[Potion] = self.get_potions(frozenset(self.context.selected), list())
+            pot_list = list(" + ".join(sorted(pot.ingredients_key)) for pot in pots)
+        else:
+            btext = "\nAlternate Recipes:"
+            print(btext)
+            potion = self.potion(frozenset(self.context.selected))
+            if potion is not None:
+                pots: list[Potion] = self.get_potions(potion.effects_key, list())
+            else:
+                pots = list()
+            pot_list = list(" + ".join(sorted(pot.ingredients_key)) for pot in pots if pot != potion)
+            
+        if len(pot_list) > 0:
+            pot_list.sort()
+            radjust = len(str(len(pot_list)))
+            for i in range(0, len(pot_list)):
+                print(f"{str(i).rjust(radjust)}) {pot_list[i]}")
     
     @property
     def sanitize(self):
-        self.context.clear()
+        self.context = None
+    
+    def pivot(self, recipe_id: int|None = None) -> Self:
+        if isinstance(self.context, EffectContext):
+            pots: list[Potion] = self.get_potions(frozenset(self.context.selected), list())
+            if recipe_id < 0 or recipe_id >= len(pots):
+                return self
+            pot_list: list[str] = list(" + ".join(sorted(pot.ingredients_key)) for pot in pots)
+            pot_list.sort()
+            args = pot_list[recipe_id].split(" + ")
+            return self.ingredients(*args)
+        elif isinstance(self.context, IngredientContext):
+            if recipe_id is not None:
+                print("Recipe id is only valid when pivoting from effects")
+            potion = self.potion(frozenset(self.context.selected))
+            if potion is None:
+                return self
+            args = list(potion.effects)
+            return self.effects(*args)
         return self
-    
-    def add(self, item: str|int):
-        available = self.available()
-        if isinstance(item, int):
-            if item >= 0 and item < len(available):
-                self.context.add(available[item])
-        elif isinstance(item, str):
-            if item.strip() in available:
-                self.context.add(item)
-        return self
-    
-    def remove(self, item: str|int):
-        available = sorted(self.context)
-        if isinstance(item, int):
-            if item >= 0 and item < len(available):
-                self.context.remove(available[item])
-        elif isinstance(item, str):
-            if item.strip() in available:
-                self.context.remove(item)
-        return self
-    
-    @property
-    def recipes(self):
-        print("Not supported")
-        
-    def pivot(self) -> Self:
-        print("Not supported")
-
-    def info(self, item: str|int|None = None):
-        print("Not supported")
-
-
-class IngredientsLab(Laboratory):
-    potion: Callable[[frozenset], Potion]
-    ingredient: Callable[[str], Ingredient|None]
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.potion = lambda x: None
-        self.ingredient = lambda x: None
-        
-    @property
-    def stat(self):
-        available = self.available()
-        selected = sorted(self.context)
-        
-        if len(selected) > 0:
-            print("Selected:")
-            self.print_tabbed(selected)
-            k = frozenset(self.context)
-            pot = self.potion(k)
-            if pot is not None:
-                print("\nEffects:")
-                fx = sorted(pot.effects)
-                self.print_tabbed(fx)
-            else:
-                print("\nNo Effects. Select more ingredients.")
-            print("")
-        
-        if len(available) > 0:
-            print("Available ingredients:")
-            self.print_tabbed(available)
-
-    def pivot(self) -> Laboratory:
-        k = frozenset(self.context)
-        pot = self.potion(k)
-        if pot is not None:
-            return self._pivot(pot.effects)
-        return self._pivot()
-
-    def print_ingredient(self, ingredient: Ingredient|None):
-        if isinstance(ingredient, Ingredient):
-            print(f"      Name: {ingredient.name}")
-            print(f"    Source: {ingredient.source}")
-            print(f"     Value: {ingredient.value}")
-            print(f"    Weight: {ingredient.weight}")
-            print(f"   Primary: {ingredient.primary}")
-            print(f" Secondary: {ingredient.secondary}")
-            print(f"  Tertiary: {ingredient.tertiary}")
-            print(f"Quaternary: {ingredient.quaternary}")
-        
-    def info(self, ingredient: str|int|None = None):
-        if isinstance(ingredient, int):
-            if ingredient >= 0 and ingredient < len(self.all_items):
-                self.print_ingredient(self.ingredient(self.all_items[ingredient]))
-        elif isinstance(ingredient, str):
-            self.print_ingredient(self.ingredient(ingredient.strip()))
-        else:
-            print("All ingredients:")
-            self.print_tabbed(self.all_items)
-            return
- 
-        
-class EffectsLab(Laboratory):
-    get_potions: Callable[[frozenset, Optional[Any]], Optional[list[Potion]]]
-    ingredients: Callable[[str], set[str]]
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.get_potions = lambda x,y: y
-        self.ingredients = lambda x: set()
-        
-    @property
-    def stat(self):
-        available = self.available()
-        selected = sorted(self.context)
-        if len(selected) > 0:
-            print(f"Selected effects:")
-            self.print_tabbed(selected)
-        
-            pots = self.get_potions(frozenset(self.context), list())
-            print(f"\nAvailable Recipes: {len(pots)}")
-            print("")
-        
-        print("Available effects:")
-        self.print_tabbed(available)
-        print("")
-        
-    @property
-    def recipes(self):
-        selected = sorted(self.context)
-        if len(selected) == 0:
-            return
-        print(f"Selected effects:")
-        self.print_tabbed(selected)
-        pots = self.get_potions(frozenset(self.context), list())
-        pot_list = list()
-        for pot in pots:
-            pot_list.append(" + ".join(sorted(pot.ingredients_key)))
-        pot_list.sort()
-        radjust = len(str(len(pot_list)))
-        print("\nAvailable Recipes:")
-        for i in range(0, len(pot_list)):
-            print(f"{str(i).rjust(radjust)}) {pot_list[i]}")
-    
-    def pivot(self, index: int = 0) -> Laboratory:
-        pots = self.get_potions(frozenset(self.context), list())
-        if index >= len(pots) or index < 0:
-            return self._pivot()
-        pot_list = list()
-        ctx = None
-        for pot in pots:
-            pot_list.append(" + ".join(sorted(pot.ingredients_key)))
-        pot_list.sort()
-        for pot in pots:
-            i = pot_list.index(" + ".join(sorted(pot.ingredients_key)))
-            if i == index:
-                ctx = pot.ingredients_key
-                break
-        return self._pivot(ctx)
-
-    def info(self, effect: str|int|None = None):
-        if isinstance(effect, int):
-            print(f"Ingredients with {self.all_items[effect]}")
-            self.print_tabbed(self.ingredients(self.all_items[effect]))
-        elif isinstance(effect, str):
-            print(f"Ingredients with {effect.strip()}")
-            self.print_tabbed(self.ingredients(effect.strip()))
-        else:
-            print("All Effects:")
-            self.print_tabbed(self.all_items)
-            return
 
 
 class Alchemist:
@@ -757,20 +818,13 @@ class Alchemist:
     effects: dict[str, Effect]
     _max_ingredients: int
     
-    def ilab(self, context: set|None = None) -> IngredientsLab:
-        lab = IngredientsLab(self.ingredients.ingredient_map.keys(), context=context)
-        lab.associated = self.associated_ingredients
+    def lab(self):
+        lab = Laboratory(self.effects.values(), self.ingredients.collection)
+        lab.associated_ingredients = self.associated_ingredients
+        lab.associated_effects = self.associated_effects
         lab.potion = self.potion
-        lab.ingredient = self.ingredient
-        lab._pivot = self.elab
-        return lab
-    
-    def elab(self, context: set|None = None) -> EffectsLab:
-        lab = EffectsLab(self.ingredients.effect_map.keys(), context=context)
-        lab.associated = self.associated_effects
         lab.get_potions = self.potions.get
-        lab.ingredients = self.ingredients.with_effect
-        lab._pivot = self.ilab
+        lab.ingredients_with_effect = self.ingredients.with_effect
         return lab
     
     @classmethod
@@ -938,7 +992,7 @@ class Alchemist:
                 ret.update(p)
         return ret - ingredient_names
     
-    def potion(self, recipe: Iterable[str]) -> Potion:
+    def potion(self, recipe: Iterable[str]) -> Potion|None:
         """Potion by effects
 
         Args:
