@@ -222,6 +222,7 @@ class Ingredient:
         print(f"  Tertiary: {self.tertiary}")
         print(f"Quaternary: {self.quaternary}")
     
+    
 class IngredientCollection:
     collection: List[Ingredient]
     ingredient_map: Dict[str,Ingredient]
