@@ -212,6 +212,15 @@ class Ingredient:
     def quaternary(self):
         return self._effects.get(3)
 
+    def print(self):
+        print(f"      Name: {self.name}")
+        print(f"    Source: {self.source}")
+        print(f"     Value: {self.value}")
+        print(f"    Weight: {self.weight}")
+        print(f"   Primary: {self.primary}")
+        print(f" Secondary: {self.secondary}")
+        print(f"  Tertiary: {self.tertiary}")
+        print(f"Quaternary: {self.quaternary}")
     
 class IngredientCollection:
     collection: List[Ingredient]
@@ -563,6 +572,9 @@ class LabContext:
     _mapping: dict
     _available: set
     associated: Callable[[set|frozenset], set[str]]
+    columns: int = 3
+    cwidth: int = 40
+    iwidth: int = 3
 
     def __init__(self, context:set, available:set, mapping:dict):
         self._selected = context
@@ -599,9 +611,31 @@ class LabContext:
     def remove_selected(self, other: int|str):
         self.selected.remove(self.mapping[other].name)
         self._available = self.associated(self.selected)
+        
+    @classmethod
+    def print_tabbed(cls, 
+                     items: Iterable[tuple[int,str]],
+                     iwidth: int = None, 
+                     columns: int = None, 
+                     cwidth: int = None):
+        columns = columns or cls.columns
+        cwidth = cwidth or cls.cwidth
+        iwidth = iwidth or cls.iwidth
+        i = 0
+        for item in items:
+            if i % columns == 0 and i > 0:
+                print('')
+            s = f"{str(item[0]).rjust(iwidth)}) {item[1]}"
+            print(f"{s.ljust(cwidth)}", end='')
+            i += 1
+        print('')
 
 
 class EffectContext(LabContext):
+    columns = 4
+    cwidth = 30
+    iwidth = 2
+    
     @property
     def mapping(self) -> dict[str|int, Effect]:
         return self._mapping
@@ -611,7 +645,7 @@ class IngredientContext(LabContext):
     @property
     def mapping(self) -> dict[str|int, Ingredient]:
         return self._mapping
-
+    
 
 class Laboratory:
     _effects: list[Effect]
@@ -658,28 +692,6 @@ class Laboratory:
                 ingredient.uid = i
             self._ingredient_map[ingredient.uid] = ingredient
     
-    def print_tabbed(self, items: Iterable[tuple[int,str]], columns: int = 4, cwidth: int = 30):
-        i = 0
-        for item in items:
-            if i % columns == 0 and i > 0:
-                print('')
-            s = f"{item[0]}) {item[1]}"
-            print(f"{s.ljust(cwidth)}", end='')
-            i += 1
-        print('')
-    
-    def print_ingredient(self, ingredient: Ingredient|None):
-        # if isinstance(ingredient, Ingredient):
-        #     print(f"      Name: {ingredient.name}")
-        #     print(f"    Source: {ingredient.source}")
-        #     print(f"     Value: {ingredient.value}")
-        #     print(f"    Weight: {ingredient.weight}")
-        #     print(f"   Primary: {ingredient.primary}")
-        #     print(f" Secondary: {ingredient.secondary}")
-        #     print(f"  Tertiary: {ingredient.tertiary}")
-        #     print(f"Quaternary: {ingredient.quaternary}")
-        pass
-    
     def ingredients(self, *args) -> Self:
         if len(args) > 0:
             # initialize an ingredient context
@@ -693,8 +705,9 @@ class Laboratory:
             self.context.associated = self.associated_ingredients
         else:
             # print all available ingredients
-            self.print_tabbed(
-                iter((itm.uid,itm.name) for itm in self._ingredients)
+            IngredientContext.print_tabbed(
+                iter((itm.uid,itm.name) for itm in self._ingredients),
+                iwidth=3,
             )
         return self
 
@@ -711,7 +724,7 @@ class Laboratory:
             self.context.associated = self.associated_effects
         else:
             # print all available effects
-            self.print_tabbed(
+            EffectContext.print_tabbed(
                 iter((itm.uid,itm.name) for itm in self._effects)
             )
         return self
@@ -735,7 +748,7 @@ class Laboratory:
             return
         
         print("Selected:")
-        self.print_tabbed(
+        self.context.print_tabbed(
             iter((self.context.mapping[itm].uid,itm) for itm in sorted(self.context.selected))
         )
         
@@ -743,7 +756,7 @@ class Laboratory:
             potion = self.potion(frozenset(self.context.selected))
             if potion is not None:
                 print("\nPotion Effects:")
-                self.print_tabbed(
+                EffectContext.print_tabbed(
                     iter((self._effect_map[itm].uid,itm) for itm in sorted(potion.effects))
                 )
         elif isinstance(self.context, EffectContext):
@@ -752,7 +765,7 @@ class Laboratory:
         
         if len(self.context.available) > 0:
             print("\nAvailable:")
-            self.print_tabbed(
+            self.context.print_tabbed(
                 iter((self.context.mapping[itm].uid,itm) for itm in sorted(self.context.available))
             )
     
@@ -762,7 +775,7 @@ class Laboratory:
             print("Must select ingredients or effects first.")
 
         print("Selected:")
-        self.print_tabbed(
+        self.context.print_tabbed(
             iter((self.context.mapping[itm].uid,itm) for itm in sorted(self.context.selected))
         )
         if isinstance(self.context, EffectContext):
